@@ -8,10 +8,16 @@
     flex-direction: row;
 }
 
+.input:focus {
+    outline: none;
+}
+
 .error {
     border: 3px solid red;
+    outline: none;
 }
 
 .errorString {
+    height: 25px;
     color: red;
 }
