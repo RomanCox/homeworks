@@ -1,7 +1,17 @@
-.someClass {
+.homework3 {
+    display: flex;
+    flex-direction: column;
+}
 
+.input {
+    display: flex;
+    flex-direction: row;
 }
 
 .error {
-    border: 1px solid red;
+    border: 3px solid red;
+}
+
+.errorString {
+    color: red;
 }
