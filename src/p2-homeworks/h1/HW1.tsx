@@ -9,7 +9,7 @@ const messageData = {
 }
 
 const message2Data = {
-    avatar: 'https://pbs.twimg.com/profile_images/1249847050528854016/4RZRLxeV_400x400.jpg',
+    avatar: 'https://kg-portal.ru/img/74807/main.jpg',
     name: 'Im Venom',
     message: 'Hi! Im out...',
     time: '04:20',

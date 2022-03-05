@@ -6,16 +6,28 @@ import SuperCheckbox from './common/c3-SuperCheckbox/SuperCheckbox'
 
 function HW4() {
     const [text, setText] = useState<string>('')
-    const error = text ? '' : 'error'
+    let [errorInput, setErrorInput] = useState<boolean>(false)
+    //const error = text ? '' : 'error'
 
     const showAlert = () => {
-        if (error) {
+        if (text) {
+            setErrorInput(true)
             alert('введите текст...')
         } else {
             alert(text) // если нет ошибки показать текст
+            setErrorInput(false)
         }
     }
 
+    const onChangeText = (value: string) => {
+        if (value.trim()) {
+            setText(value)
+            setErrorInput(false)
+        } else {
+            setText('')
+            setErrorInput(true)
+        }
+    }
     const [checked, setChecked] = useState<boolean>(false)
     const testOnChange = (e: ChangeEvent<HTMLInputElement>) => setChecked(e.currentTarget.checked)
 
@@ -27,30 +39,30 @@ function HW4() {
             <div className={s.column}>
                 <SuperInputText
                     value={text}
-                    onChangeText={setText}
+                    onChangeText={onChangeText}
                     onEnter={showAlert}
-                    error={error}
+                    errorInput={errorInput}
                     // spanClassName={s.testSpanError}
                 />
 
                 <SuperInputText
-                    className={s.blue} // проверьте, рабоет ли смешивание классов
+                    className={s.blue} // проверьте, работает ли смешивание классов
                 />
 
                 {/*----------------------------------------------------*/}
 
-                <SuperButton>
+                <SuperButton red={false}>
                     default
                 </SuperButton>
 
                 <SuperButton
-                    red // пропсу с булевым значением не обязательно указывать true
+                    red // пропсу с булевым значением необязательно указывать true
                     onClick={showAlert}
                 >
                     delete {/*// название кнопки попадёт в children*/}
                 </SuperButton>
 
-                <SuperButton disabled>
+                <SuperButton disabled={true}>
                     disabled
                 </SuperButton>
 
