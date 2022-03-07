@@ -49,4 +49,4 @@ function HW1() {
     )
 }
 
-export default HW1
+export default HW1;

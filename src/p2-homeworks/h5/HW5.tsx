@@ -1,20 +1,21 @@
-import React from 'react'
-import Header from './Header'
-import Routes from './Routes'
+import React, {useState} from 'react';
+import Header from './Header';
+import Navigation from './Navigation';
+import {HashRouter} from "react-router-dom";
 
 function HW5() {
+
+    let [menuActive, setMenuActive] = useState(false)
+
     return (
         <div>
             {/*в gh-pages лучше работает HashRouter*/}
-            {/*<HashRouter>*/}
-
-            <Header/>
-
-            <Routes/>
-
-            {/*</HashRouter>*/}
+            <HashRouter>
+                <Header menuActive={menuActive} setMenuActive={setMenuActive}/>
+                <Navigation menuActive={menuActive} setMenuActive={setMenuActive}/>
+            </HashRouter>
         </div>
     )
 }
 
-export default HW5
+export default HW5;
