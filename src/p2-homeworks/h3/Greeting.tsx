@@ -1,32 +1,58 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react'
+import React, {ChangeEvent} from 'react'
 import s from './Greeting.module.css'
+import SuperInputText from "../h4/common/c1-SuperInputText/SuperInputText";
+import SuperButton from "../h4/common/c2-SuperButton/SuperButton";
+import {UserType} from "./HW3";
 
 type GreetingPropsType = {
-    name: string // need to fix any
-    setNameCallback: (event: ChangeEvent<HTMLInputElement>) => void // need to fix any
-    addUser: () => void // need to fix any
-    enterKey: (e: KeyboardEvent<HTMLInputElement>) => void
-    error: string // need to fix any
-    totalUsers: number // need to fix any
+    name: string, // need to fix any
+    setNameCallback: (event: ChangeEvent<HTMLInputElement>) => void, // need to fix any
+    addUser: () => void, // need to fix any
+    error: boolean, // need to fix any
+    totalUsers: number, // need to fix any
+    setUsers: (users: Array<UserType>) => void,
 }
 
 // презентационная компонента (для верстальщика)
 const Greeting: React.FC<GreetingPropsType> = (
-    {name, setNameCallback, addUser, enterKey, error, totalUsers} // деструктуризация пропсов
+    {name, setNameCallback, addUser, error, totalUsers, setUsers} // деструктуризация пропсов
 ) => {
-    const inputClass = error === 'name is require!' ? s.error : ''// need to fix with (?:)
-    //const disableButton = name === '' || error === 'name is require!' ? true : false
+    const inputClass = `${s.background} ${error ? s.error : ''}`// need to fix with (?:)
+    const countStyle = `${s.count} ${error ? s.error : ''}`
+    const onClickHandler = () => {
+        setUsers([])
+    }
+
+    let display: string
+    if (error) {
+        display = 'name is require!'
+    } else {
+        display = JSON.stringify(totalUsers)
+    }
 
     return (
-    <div className = {s.homework3}>
-        <div className = {s.input}>
-            <input value={name} onChange={setNameCallback} onKeyDown={enterKey} className={inputClass}/>
-            <button onClick={addUser} disabled={!name}>add</button>
-            <span>{totalUsers}</span>
+        <div className={s.container}>
+            <div className={s.inputContainer}>
+                <SuperInputText
+                    value={name}
+                    onChange={setNameCallback}
+                    onEnter={addUser}
+                    className={inputClass}
+                    placeholder={'Введите имя'}
+                    inputError={error}
+                />
+            </div>
+            <div className={s.addContainer}>
+                <SuperButton onClick={addUser} disabled={!name}>ADD</SuperButton>
+            </div>
+            <div className={s.countContainer}>
+                <span className={countStyle}>{display}</span>
+            </div>
+            <div className={s.resetContainer}>
+                <SuperButton onClick={onClickHandler} red>RESET</SuperButton>
+            </div>
         </div>
-        <span className={s.errorString}>{error}</span>
-    </div>
-)
+    )
 }
 
 export default Greeting

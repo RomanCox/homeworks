@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import Affairs from './Affairs'
+import s from './HW2.module.css'
 
 // types
 export type AffairPriorityType = 'high' | 'middle' | 'low' // need to fix any
-export type AffairType = any // need to fix any
+export type AffairType = {_id: number, name: string, priority: string} // need to fix any
 export type FilterType = 'all' | AffairPriorityType
 
 // constants
-const defaultAffairs: any = [ // need to fix any
+const defaultAffairs: Array<AffairType> = [ // need to fix any
     {_id: 1, name: 'React', priority: 'high'},
     {_id: 2, name: 'anime', priority: 'low'},
     {_id: 3, name: 'games', priority: 'low'},
@@ -32,13 +33,12 @@ function HW2() {
     const deleteAffairCallback = (_id: number) => setAffairs(deleteAffair(affairs, _id)) // need to fix any
 
     return (
-        <div>
-            <hr/>
-            homeworks 2
-
+        <div className={s.container}>
+            <h2>homeworks 2</h2>
             {/*should work (должно работать)*/}
             <Affairs
                 data={filteredAffairs}
+                filter={filter}
                 setFilter={setFilter}
                 deleteAffairCallback={deleteAffairCallback}
             />

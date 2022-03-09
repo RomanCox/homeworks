@@ -1,5 +1,4 @@
 import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent} from 'react'
-import s from './SuperInputText.module.css'
 import style from './MyInputText.module.css'
 
 // тип пропсов обычного input
@@ -8,11 +7,14 @@ type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElem
 // здесь мы говорим что у нашего input будут такие же пропсы как у обычного input
 // (чтоб не писать value: string, onChange: ...; они уже все описаны в DefaultInputPropsType)
 type SuperInputTextPropsType = DefaultInputPropsType & { // и + ещё пропсы которых нет в стандартном input
-    onChangeText?: (value: string) => void
-    onEnter?: () => void
-    error?: string
-    spanClassName?: string
-    errorInput?: boolean
+    onChangeText?: (value: string) => void,
+    onEnter?: () => void,
+    error?: string,
+    spanClassName?: string,
+    background?: string,
+    className?: string,
+    placeholder?: string,
+    inputError?: boolean,
 }
 
 const SuperInputText: React.FC<SuperInputTextPropsType> = (
@@ -20,8 +22,9 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
         type, // достаём и игнорируем чтоб нельзя было задать другой тип input
         onChange, onChangeText,
         onKeyPress, onEnter,
-        error, errorInput,
+        error, inputError,
         className, spanClassName,
+        background, placeholder,
 
         ...restProps// все остальные пропсы попадут в объект restProps
     }
@@ -40,31 +43,32 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
         && onEnter() // то вызвать его
     }
 
-    const finalSpanClassName = `${s.error} ${spanClassName ? spanClassName : ''}`
-    //const finalInputClassName = `${s.errorInput} ${className}` // need to fix with (?:) and s.superInput
-    const finalInputClassName = `${errorInput ? style.barError : style.bar}`
+    const finalSpanClassName = `${style.span} ${inputError ? style.spanError : ''} ${spanClassName ? spanClassName : ''}`
+    /*const finalInputClassName = `${s.errorInput} ${className}` // need to fix with (?:) and s.superInput*/
+    /*const myInputClass = `${className} ${style.input}`*/
+    const myInputStyle = `${className}
+    ${style.input}
+    ${error ? style.error : ''}
+    ${inputError ? style.inputError : ''}`
 
-    const barClassName = `${errorInput ? style.barError : style.bar}`
-    const inputClassName = `${errorInput ? style.inputError : style.input}`
+    const barStyle = `${style.bar} ${inputError ? style.barError : ''}`
 
     return (
-        <>
-            <div className={style.group}>
-                <input
-                    type={'text'}
-                    onChange={onChangeCallback}
-                    onKeyPress={onKeyPressCallback}
-                    /*className={finalInputClassName}*/
-                    className={inputClassName}
-                    required
+        <div className={style.group}>
+            <input
+                type={'text'}
+                onChange={onChangeCallback}
+                onKeyPress={onKeyPressCallback}
+                // className={finalInputClassName}
+                className={myInputStyle}
 
-                    {...restProps} // отдаём input остальные пропсы если они есть (value например там внутри)
-                />
-                <span className={barClassName}/>
-                <label className={style.label}>Введите текст</label>
-            </div>
-            {errorInput && <span className={finalSpanClassName}>{'Error'}</span>}
-        </>
+                {...restProps} // отдаём input остальные пропсы если они есть (value например там внутри)
+            />
+            <span className={barStyle}>{}</span>
+            <label className={style.label}>{placeholder}</label>
+
+            {inputError && <span className={finalSpanClassName}>{error}</span>}
+        </div>
     )
 }
 

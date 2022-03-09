@@ -1,11 +1,14 @@
 import React from 'react'
 import Affair from './Affair'
 import {AffairType, FilterType} from './HW2'
+import s from './Affairs.module.css'
+import SuperButton from "../h4/common/c2-SuperButton/SuperButton";
 
 type AffairsPropsType = { // need to fix any
-    data: Array<AffairType>
-    setFilter: (filter: FilterType) => void
-    deleteAffairCallback: (_id: number) => void
+    data: Array<AffairType>,
+    filter: FilterType,
+    setFilter: (filter: FilterType) => void,
+    deleteAffairCallback: (_id: number) => void,
 }
 
 function Affairs(props: AffairsPropsType) {
@@ -31,14 +34,18 @@ function Affairs(props: AffairsPropsType) {
     }
 
     return (
-        <div>
-
+        <div className={s.container}>
             {mappedAffairs}
-
-            <button onClick={setAll}>All</button>
-            <button onClick={setHigh}>High</button>
-            <button onClick={setMiddle}>Middle</button>
-            <button onClick={setLow}>Low</button>
+            <div className={s.buttons}>
+                {/*<button onClick={setAll}>All</button>
+                <button onClick={setHigh}>High</button>
+                <button onClick={setMiddle}>Middle</button>
+                <button onClick={setLow}>Low</button>*/}
+                <SuperButton onClick={setAll} size={'small'}>All</SuperButton>
+                <SuperButton onClick={setHigh} className={s.high}>High</SuperButton>
+                <SuperButton onClick={setMiddle} className={s.middle}>Middle</SuperButton>
+                <SuperButton onClick={setLow} className={s.low}>Low</SuperButton>
+            </div>
         </div>
     )
 }

@@ -5,44 +5,51 @@ import SuperButton from './common/c2-SuperButton/SuperButton'
 import SuperCheckbox from './common/c3-SuperCheckbox/SuperCheckbox'
 
 function HW4() {
-    const [text, setText] = useState<string>('')
-    let [errorInput, setErrorInput] = useState<boolean>(false)
-    //const error = text ? '' : 'error'
+    const [text, setText] = useState<string>('');
+    const [inputError, setInputError] = useState<boolean>(false);
+    let error = text ? '' : 'error';
+
 
     const showAlert = () => {
-        if (text) {
-            setErrorInput(true)
+        if (inputError) {
             alert('введите текст...')
         } else {
-            alert(text) // если нет ошибки показать текст
-            setErrorInput(false)
+            setText('')
+            alert(text)
         }
     }
 
-    const onChangeText = (value: string) => {
-        if (value.trim()) {
-            setText(value)
-            setErrorInput(false)
+    const setTextCallback = (e: ChangeEvent<HTMLInputElement>) => { // need to fix any
+        const correctText = e.currentTarget.value.trim()
+        if (correctText) { // need to fix
+            setText(correctText)
+            setInputError(false)
         } else {
             setText('')
-            setErrorInput(true)
+            setInputError(true)
         }
     }
+
     const [checked, setChecked] = useState<boolean>(false)
     const testOnChange = (e: ChangeEvent<HTMLInputElement>) => setChecked(e.currentTarget.checked)
+    const deleteText = () => {
+        setText('')
+    }
 
     return (
-        <div>
-            <hr/>
-            homeworks 4
+        <div className={s.container}>
+            <h2>homeworks 4</h2>
 
             <div className={s.column}>
                 <SuperInputText
                     value={text}
-                    onChangeText={onChangeText}
+                    onChange={setTextCallback}
                     onEnter={showAlert}
-                    errorInput={errorInput}
-                    // spanClassName={s.testSpanError}
+                    error={error}
+                    className={s.lightgreen}
+                    placeholder={'Введите текст'}
+                    inputError={inputError}
+                    spanClassName={s.testSpanError}
                 />
 
                 <SuperInputText
@@ -51,18 +58,18 @@ function HW4() {
 
                 {/*----------------------------------------------------*/}
 
-                <SuperButton red={false}>
+                <SuperButton onClick={showAlert}>
                     default
                 </SuperButton>
 
                 <SuperButton
+                    onClick={deleteText}
                     red // пропсу с булевым значением необязательно указывать true
-                    onClick={showAlert}
-                >
-                    delete {/*// название кнопки попадёт в children*/}
+                    >
+                    delete {/*название кнопки попадёт в children*/}
                 </SuperButton>
 
-                <SuperButton disabled={true}>
+                <SuperButton disabled>
                     disabled
                 </SuperButton>
 

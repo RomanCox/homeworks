@@ -1,10 +1,11 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import Greeting from './Greeting'
 import {UserType} from "./HW3";
 
 type GreetingContainerPropsType = {
     users: Array<UserType> // need to fix any
     addUserCallback: (name: string) => void // need to fix any
+    setUsers: (users: Array<UserType>) => void;
 }
 
 // более простой и понятный для новичков
@@ -12,29 +13,25 @@ type GreetingContainerPropsType = {
 
 // более современный и удобный для про :)
 // уровень локальной логики
-const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUserCallback}) => { // деструктуризация пропсов
+const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUserCallback, setUsers}) => { // деструктуризация пропсов
     const [name, setName] = useState<string>('') // need to fix any
-    const [error, setError] = useState<string>('') // need to fix any
+    const [error, setError] = useState<boolean>(false) // need to fix any
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { // need to fix any
         const correctName = e.currentTarget.value.trim()
         if (correctName) { // need to fix
             setName(correctName)
-            setError('')
+            setError(false)
         } else {
             setName('')
-            setError('name is require!')
+            setError(true)
         }
     }
     const addUser = () => {
+        if (name) {
         setName('')
         addUserCallback(name)
         alert(`Hello ${name} !`) // need to fix
-    }
-
-    const enterKey = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter' && name) {
-            addUser()
         }
     }
 
@@ -45,9 +42,9 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
             name={name}
             setNameCallback={setNameCallback}
             addUser={addUser}
-            enterKey={enterKey}
             error={error}
             totalUsers={totalUsers}
+            setUsers={setUsers}
         />
     )
 }

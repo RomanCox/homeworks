@@ -9,7 +9,8 @@
     display: block;
     width: 300px;
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #999;
+    caret-color: #5264AE;
 }
 
 .input:focus {
@@ -28,10 +29,18 @@
     -webkit-transition: 0.2s ease all;
 }
 
-.input:focus ~ .label, .input:valid ~ .label {
+.input:focus ~ .label,
+.input:valid ~ .label:focus {
     top: -15px;
     font-size: 14px;
-    color: #092bdc;
+    color: #5264AE;
+}
+
+.inputError:focus ~ .label,
+.inputError:valid ~ .label:focus {
+    top: -15px;
+    font-size: 14px;
+    color: red;
 }
 
 .bar {
@@ -40,16 +49,22 @@
     width: 320px;
 }
 
-.bar:before, .bar:after {
-    content: "";
+.bar:before,
+.bar:after {
+    content: '';
     height: 2px;
     width: 0;
     bottom: 0;
     position: absolute;
-    background: #092bdc;
+    background: #5264AE;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
+}
+
+.barError:before,
+.barError:after {
+    background: red;
 }
 
 .bar:before {
@@ -65,40 +80,18 @@
     width: 50%;
 }
 
-.barError {
-    position: relative;
-    display: block;
-    width: 320px;
+.span {
+    color: #d2ff89;
+    font-weight: 900;
+    font-size: 30px;
+    padding-top: 10px;
+    -webkit-text-stroke: 0 white;
 }
 
-.barError:before, .barError:after {
-    content: "";
-    height: 2px;
-    width: 0;
-    bottom: 0;
-    position: absolute;
-    background: #e80000;
-    transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;
+.input:focus ~ .span {
+    -webkit-text-stroke: 0.02em white;
 }
 
-.inputError {
-    font-size: 16px;
-    padding: 10px;
-    display: block;
-    width: 300px;
-    border: none;
-    border-bottom: 1px solid #e80000;
-}
-
-.inputError:focus ~ .label, .inputError:valid ~ .label {
-    top: -15px;
-    font-size: 14px;
-    color: #e80000;
-}
-
-.inputError:focus ~ .inputError:before,
-.inputError:focus ~ .inputError:after {
-    width: 50%;
+.input:focus ~ .spanError {
+    color: red;
 }
