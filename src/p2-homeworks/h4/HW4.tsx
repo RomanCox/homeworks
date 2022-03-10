@@ -65,7 +65,7 @@ function HW4() {
                 <SuperButton
                     onClick={deleteText}
                     red // пропсу с булевым значением необязательно указывать true
-                    >
+                >
                     delete {/*название кнопки попадёт в children*/}
                 </SuperButton>
 
@@ -74,16 +74,19 @@ function HW4() {
                 </SuperButton>
 
                 {/*----------------------------------------------------*/}
-
-                <SuperCheckbox
-                    checked={checked}
-                    onChangeChecked={setChecked}
-                >
-                    some text {/*// этот текст попадёт в children*/}
-                </SuperCheckbox>
-
-                {/*// onChange тоже должен работать*/}
-                <SuperCheckbox checked={checked} onChange={testOnChange}/>
+                <div>
+                    <SuperCheckbox
+                        checked={checked}
+                        onChangeChecked={setChecked}
+                    >
+                        some text {/*// этот текст попадёт в children*/}
+                    </SuperCheckbox>
+                </div>
+                <br/>
+                <div>
+                    {/*// onChange тоже должен работать*/}
+                    <SuperCheckbox checked={checked} onChange={testOnChange}/>
+                </div>
             </div>
 
             <hr/>
