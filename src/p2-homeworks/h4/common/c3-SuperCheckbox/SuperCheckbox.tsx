@@ -28,31 +28,21 @@ const SuperCheckbox: React.FC<SuperCheckboxPropsType> = (
         onChangeChecked && onChangeChecked(event.currentTarget.checked)
     }
 
-    /*const finalInputClassName = `${style.checkbox} ${className ? className : ''}`*/
-
+    const checkboxStyle = `${style.inputCheckbox} ${className ? className : ''}`
+    const labelStyle = `${style.label} ${checked ? style.labelChecked : ''}`
 
     return (
-        /*<label>
-            <input
-                type={'checkbox'}
-                id={'cbx'}
-                onChange={onChangeCallback}
-                className={style.checkboxWrapper}
 
-                {...restProps} // отдаём input остальные пропсы если они есть (checked например там внутри)
-            />
-
-            {children && <span className={s.spanClassName}>{children}</span>}
-        </label> // благодаря label нажатие на span передастся в input*/
         <div className={style.container}>
-            <input type="checkbox" id="cbx" className={style.input} onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeCallback(event)} checked={checked}/>
-            <label htmlFor="cbx" className={style.check}>
-                <svg width="18px" height="18px" viewBox="0 0 18 18">
-                    <path
-                        d="M1,9 L1,3.5 C1,2 2,1 3.5,1 L14.5,1 C16,1 17,2 17,3.5 L17,14.5 C17,16 16,17 14.5,17 L3.5,17 C2,17 1,16 1,14.5 L1,9 Z"></path>
-                    <polyline points="1 9 7 14 15 4"></polyline>
-                </svg>
-            </label>
+            <label className={labelStyle}>
+                <input type="checkbox" className={checkboxStyle}
+                       onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeCallback(event)}
+                       checked={checked}
+
+                       {...restProps} // отдаём input остальные пропсы если они есть (checked например там внутри)
+                />
+                {children && <span>{children}</span>}
+            </label> {/*благодаря label нажатие на span передастся в input*/}
         </div>
     )
 }
