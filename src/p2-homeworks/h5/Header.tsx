@@ -10,7 +10,7 @@ function Header() {
     const [menu, setMenu] = useState<boolean>(false)
 
     const activeNavLink = (title: string) => {
-        if (path == title) {
+        if (path === title) {
             return `${s.buttonActive}`
         } else {
             return ''
@@ -51,9 +51,9 @@ function Header() {
                     </SuperButton>
                 </div>
             </div>
-            <div className={s.h1Container}>
+            {/*<div className={s.h1Container}>
                 <h1>react homeworks:</h1>
-            </div>
+            </div>*/}
         </div>
     )
 }

@@ -20,8 +20,8 @@ function Navigation() {
                 <Route path={'/'} element={<Navigate to={PATH.PRE_JUNIOR}/>}/>
 
                 <Route path={PATH.PRE_JUNIOR} element={<PreJunior/>}/>
-                {/*<Route path={PATH.JUNIOR} element={<Junior/>}/>
-                <Route path={PATH.JUNIOR_PLUS} element={<JuniorPlus/>}/>*/}
+                <Route path={PATH.JUNIOR} element={<Error404/>}/>
+                <Route path={PATH.JUNIOR_PLUS} element={<Error404/>}/>
                 {/*у этого route нет пути, он отрисуется, если пользователь захочет попасть на несуществующую страницу*/}
                 <Route path='*' element={<Error404/>}/>
 

@@ -26,8 +26,11 @@ const message2Data = {
 function HW1() {
     return (
         <div className={s.container}>
+            <div className={s.h1Container}>
+            <h1>react homeworks:</h1>
+            </div>
             <h2>homeworks 1</h2>
-            <div className={s.messages}>
+            <div>
                 <Message
                     avatar={messageData.avatar}
                     name={messageData.name}

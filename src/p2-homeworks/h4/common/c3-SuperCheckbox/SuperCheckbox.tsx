@@ -1,5 +1,4 @@
 import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes} from 'react'
-import s from './SuperCheckbox.module.css'
 import style from './MyCheckbox.module.css'
 
 // тип пропсов обычного input
