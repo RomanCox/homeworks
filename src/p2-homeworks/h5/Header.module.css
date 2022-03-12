@@ -10,6 +10,22 @@
     z-index: 4;
 }
 
+.menuButtonContainer {
+    width: 100%;
+    height: 75px;
+    z-index: 98;
+    display: flex;
+    justify-content: center;
+    background: #f286fc;
+}
+
+.h1Container {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+}
+
 .hiddenMenu1 {
     display: none;
 }
@@ -20,18 +36,20 @@
     list-style: none;
     box-sizing: border-box;
     width: 100%;
-    height: 75px;
+    height: 85px;
     background: #f286fc;
     z-index: 2;
     transition: 0.5s;
 }
 
 .menuOff {
-    transform: translateY(-100%);
+    transform: translateY(0);
+    z-index: -1;
 }
 
 .menuOn {
-    transform: translateY(0%);
+    transform: translateY(65px);
+    z-index: 99;
 }
 
 .menuList {
@@ -54,3 +72,4 @@
     color: #524f4e;
     transform: translateY(-7px);
 }
+

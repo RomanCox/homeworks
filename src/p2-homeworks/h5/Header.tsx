@@ -31,11 +31,14 @@ function Header() {
 
     return (
         <div className={s.container}>
-            <h1>react homeworks:</h1>
+            <div className={s.menuButtonContainer}>
+                <SuperButton onClick={menuOnOff} className={menuActive}>MENU</SuperButton>
+            </div>
 
             <div className={menuStyle}>
                 <div className={s.menuList}>
-                    <SuperButton onClick={() => onClickHandler('PRE-JUNIOR')} className={activeNavLink('PRE-JUNIOR')}>
+                    <SuperButton onClick={() => onClickHandler('PRE-JUNIOR')}
+                                 className={activeNavLink('PRE-JUNIOR')}>
                         {<NavLink to={PATH.PRE_JUNIOR} className={s.navLink}>PRE-JUNIOR</NavLink>}
                     </SuperButton>
 
@@ -48,9 +51,9 @@ function Header() {
                     </SuperButton>
                 </div>
             </div>
-
-            <SuperButton onClick={menuOnOff} className={menuActive}>MENU</SuperButton>
-
+            <div className={s.h1Container}>
+                <h1>react homeworks:</h1>
+            </div>
         </div>
     )
 }
