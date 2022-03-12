@@ -2,7 +2,7 @@
     position: fixed;
     width: 100%;
     height: 150px;
-    background: white;
+    background: #f286fc;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +21,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 75px;
-    background-color: #f286fc;
+    background: #f286fc;
     z-index: 2;
     transition: 0.5s;
 }
@@ -39,4 +39,18 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.navLink {
+    text-decoration: none;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonActive {
+    background: #2EE59D;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+    color: #524f4e;
+    transform: translateY(-7px);
 }

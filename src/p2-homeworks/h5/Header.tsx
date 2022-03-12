@@ -1,23 +1,33 @@
 import React, {useState} from 'react'
-import {NavLink, Route} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {PATH} from "./Navigation";
 import s from './Header.module.css'
 import SuperButton from "../h4/common/c2-SuperButton/SuperButton";
-import PreJunior from "./pages/PreJunior";
 
 function Header() {
 
+    const [path, setPath] = useState<string>('')
     const [menu, setMenu] = useState<boolean>(false)
+
+    const activeNavLink = (title: string) => {
+        if (path == title) {
+            return `${s.buttonActive}`
+        } else {
+            return ''
+        }
+    }
+
+    const onClickHandler = (title: string) => {
+        setPath(title)
+    }
 
     const menuOnOff = () => {
         setMenu(!menu)
     }
 
-    const onClickHandler = () => {
-        <Route path={PATH.PRE_JUNIOR} element={<PreJunior/>}/>
-    }
-
     const menuStyle = `${s.menu} ${menu ? s.menuOn : s.menuOff}`
+
+    const menuActive = `${menu ? s.buttonActive : ''}`
 
     return (
         <div className={s.container}>
@@ -25,13 +35,22 @@ function Header() {
 
             <div className={menuStyle}>
                 <div className={s.menuList}>
-                    <SuperButton onClick={onClickHandler}>{<NavLink to={PATH.PRE_JUNIOR}>PRE-JUNIOR</NavLink>}</SuperButton>
-                    <SuperButton>{<NavLink to={PATH.JUNIOR}>JUNIOR</NavLink>}</SuperButton>
-                    <SuperButton>{<NavLink to={PATH.JUNIOR_PLUS}>JUNIOR+</NavLink>}</SuperButton>
+                    <SuperButton onClick={() => onClickHandler('PRE-JUNIOR')} className={activeNavLink('PRE-JUNIOR')}>
+                        {<NavLink to={PATH.PRE_JUNIOR} className={s.navLink}>PRE-JUNIOR</NavLink>}
+                    </SuperButton>
+
+                    <SuperButton onClick={() => onClickHandler('JUNIOR')} className={activeNavLink('JUNIOR')}>
+                        {<NavLink to={PATH.JUNIOR} className={s.navLink}>JUNIOR</NavLink>}
+                    </SuperButton>
+
+                    <SuperButton onClick={() => onClickHandler('JUNIOR+')} className={activeNavLink('JUNIOR+')}>
+                        {<NavLink to={PATH.JUNIOR_PLUS} className={s.navLink}>JUNIOR+</NavLink>}
+                    </SuperButton>
                 </div>
             </div>
 
-            <SuperButton onClick={menuOnOff}>MENU</SuperButton>
+            <SuperButton onClick={menuOnOff} className={menuActive}>MENU</SuperButton>
+
         </div>
     )
 }
