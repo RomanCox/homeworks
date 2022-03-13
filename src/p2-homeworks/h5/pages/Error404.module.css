@@ -1,5 +1,8 @@
 .container {
-    /*background-image: url("404.png");*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2F353F;
     width: 100%;
     height: 100vh;
 }

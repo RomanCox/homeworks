@@ -16,22 +16,26 @@ type GreetingContainerPropsType = {
 const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUserCallback, setUsers}) => { // деструктуризация пропсов
     const [name, setName] = useState<string>('') // need to fix any
     const [error, setError] = useState<boolean>(false) // need to fix any
+    const [display, setDisplay] = useState<string>('0')
 
     const setNameCallback = (e: ChangeEvent<HTMLInputElement>) => { // need to fix any
         const correctName = e.currentTarget.value.trim()
         if (correctName) { // need to fix
             setName(correctName)
             setError(false)
+            /*setDisplay(JSON.stringify(totalUsers))*/
         } else {
             setName('')
             setError(true)
+            setDisplay('name is require!')
         }
     }
     const addUser = () => {
         if (name) {
-        setName('')
-        addUserCallback(name)
-        alert(`Hello ${name} !`) // need to fix
+            setName('')
+            addUserCallback(name)
+            alert(`Hello ${name} !`) // need to fix
+            setDisplay(JSON.stringify(totalUsers+1))
         }
     }
 
@@ -45,6 +49,9 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({users, addUser
             error={error}
             totalUsers={totalUsers}
             setUsers={setUsers}
+            display={display}
+            setDisplay={setDisplay}
+            setError={setError}
         />
     )
 }
