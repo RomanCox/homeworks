@@ -71,7 +71,7 @@ const SuperEditableSpan: React.FC<SuperEditableSpanType> = (
                         {...restSpanProps}
                     >
                         {/*если нет захардкодженного текста для span, то значение input*/}
-                        {children || restProps.value}
+                        ✎{children || restProps.value}
                     </span>
                 )
             }
