@@ -1,29 +1,49 @@
-import React, {SelectHTMLAttributes, DetailedHTMLProps, ChangeEvent} from 'react'
+import React, {SelectHTMLAttributes, DetailedHTMLProps, useState} from 'react'
+import s from './MySelect.module.css'
 
 type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
 
 type SuperSelectPropsType = DefaultSelectPropsType & {
-    options?: any[]
-    onChangeOption?: (option: any) => void
+    options?: any[],
+    onChangeOption?: (option: string) => void,
+    value?: string,
 }
 
 const SuperSelect: React.FC<SuperSelectPropsType> = (
     {
-        options,
+        options, value,
         onChange, onChangeOption,
         ...restProps
     }
 ) => {
-    const mappedOptions: any[] = []; // map options with key
+    const mappedOptions: any[] = options ? options.map((o, i: number) => (
+        /*<option key={o + '-' + i} className={s.option} value={o}>{o}</option>*/
+        <div key={o + '-' + i} className={s.list} /*value={o}*/>{o}</div>
+    )) : [] // map options with key
 
-    const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>) => {
-        // onChange, onChangeOption
+    const [listActive, setListActive] = useState<boolean>(false)
+
+    const onClickCallback = (/*e: MouseEventHandler<HTMLDivElement>*/) => {
+        /*onChange
+        && onChange(e)
+        onChangeOption
+        && onChangeOption(e)*/
+        setListActive(!listActive)
     }
 
+    const barStyle = `${s.bar} ${listActive ? s.barActive : ''}`
+
+    const listStyle = `${s.option} ${listActive ? s.optionOn : s.optionOff}`
+
     return (
-        <select onChange={onChangeCallback} {...restProps}>
-            {mappedOptions}
-        </select>
+        <div className={s.container}>
+            <div className={s.select} onClick={onClickCallback}>{value}</div>
+            <span className={barStyle}>{}</span>
+
+            <div className={listStyle}>
+                {mappedOptions}
+            </div>
+        </div>
     )
 }
 

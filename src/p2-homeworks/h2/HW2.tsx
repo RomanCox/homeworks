@@ -4,7 +4,7 @@ import s from './HW2.module.css'
 
 // types
 export type AffairPriorityType = 'high' | 'middle' | 'low' // need to fix any
-export type AffairType = {_id: number, name: string, priority: string} // need to fix any
+export type AffairType = { _id: number, name: string, priority: string } // need to fix any
 export type FilterType = 'all' | AffairPriorityType
 
 // constants
@@ -34,19 +34,24 @@ function HW2() {
 
     return (
         <div className={s.container}>
-            <h2>homeworks 2</h2>
-            {/*should work (должно работать)*/}
-            <Affairs
-                data={filteredAffairs}
-                filter={filter}
-                setFilter={setFilter}
-                deleteAffairCallback={deleteAffairCallback}
-            />
+            <div className={s.h2Container}>
+                <h2>homeworks 2</h2>
+            </div>
 
-            <hr/>
-            {/*для личного творчества, могу проверить*/}
-            {/*<AlternativeAffairs/>*/}
-            <hr/>
+            {/*should work (должно работать)*/}
+            <div className={s.itemsContainer}>
+                <Affairs
+                    data={filteredAffairs}
+                    filter={filter}
+                    setFilter={setFilter}
+                    deleteAffairCallback={deleteAffairCallback}
+                />
+
+                <hr/>
+                {/*для личного творчества, могу проверить*/}
+                {/*<AlternativeAffairs/>*/}
+                <hr/>
+            </div>
         </div>
     )
 }

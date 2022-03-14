@@ -1,9 +1,25 @@
 .container {
     width: 100%;
+    height: 100vh;
+    background: #d2ff89;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #d2ff89;
+}
+
+.h2Container {
+    width: 100%;
+    height: 172px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.itemsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .lightgreen {
@@ -12,10 +28,4 @@
 
 .blue {
     background: #5c97ff;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }

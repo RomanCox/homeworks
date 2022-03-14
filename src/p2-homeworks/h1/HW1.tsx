@@ -27,7 +27,7 @@ function HW1() {
     return (
         <div className={s.container}>
             <div className={s.h1Container}>
-            <h1>react homeworks:</h1>
+                <h1>react homeworks:</h1>
             </div>
             <h2>homeworks 1</h2>
             <div>

@@ -6,3 +6,21 @@
     flex-direction: column;
     align-items: center;
 }
+
+.selectContainer {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    height: 100px;
+    justify-content: space-around;
+}
+
+
+.radioContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+    height: 100px;
+    justify-content: space-around;
+}

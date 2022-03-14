@@ -38,9 +38,11 @@ function HW4() {
 
     return (
         <div className={s.container}>
-            <h2>homeworks 4</h2>
+            <div className={s.h2Container}>
+                <h2>homeworks 4</h2>
+            </div>
 
-            <div className={s.column}>
+            <div className={s.itemsContainer}>
                 <SuperInputText
                     value={text}
                     onChange={setTextCallback}
@@ -52,9 +54,9 @@ function HW4() {
                     spanClassName={s.testSpanError}
                 />
 
-                <SuperInputText
-                    className={s.blue} // проверьте, работает ли смешивание классов
-                />
+                {/*<SuperInputText*/}
+                {/*    className={s.blue} // проверьте, работает ли смешивание классов*/}
+                {/*/>*/}
 
                 {/*----------------------------------------------------*/}
 
@@ -88,13 +90,6 @@ function HW4() {
                     <SuperCheckbox checked={checked} onChange={testOnChange}/>
                 </div>
             </div>
-
-            <hr/>
-            {/*для личного творчества, могу проверить*/}
-            {/*<AlternativeSuperInputText/>*/}
-            {/*<AlternativeSuperButton/>*/}
-            {/*<AlternativeSuperCheckbox/>*/}
-            <hr/>
         </div>
     )
 }

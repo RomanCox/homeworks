@@ -51,9 +51,6 @@ function Header() {
                     </SuperButton>
                 </div>
             </div>
-            {/*<div className={s.h1Container}>
-                <h1>react homeworks:</h1>
-            </div>*/}
         </div>
     )
 }

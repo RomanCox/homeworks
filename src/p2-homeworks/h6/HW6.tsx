@@ -17,17 +17,21 @@ function HW6() {
 
     return (
         <div className={s.container}>
-            <h2>homeworks 6</h2>
+            <div className={s.h2Container}>
+                <h2>homeworks 6</h2>
+            </div>
 
             {/*should work (должно работать)*/}
-            <SuperEditableSpan
-                value={value}
-                onChangeText={setValue}
-                spanProps={{children: value ? undefined : 'double click for enter text...'}}
-            />
-            <div className={s.buttonsContainer}>
-                <SuperButton onClick={save}>save</SuperButton>
-                <SuperButton onClick={restore}>restore</SuperButton>
+            <div className={s.itemsContainer}>
+                <SuperEditableSpan
+                    value={value}
+                    onChangeText={setValue}
+                    spanProps={{children: value ? undefined : 'double click for enter text...'}}
+                />
+                <div className={s.buttons}>
+                    <SuperButton onClick={save}>save</SuperButton>
+                    <SuperButton onClick={restore}>restore</SuperButton>
+                </div>
             </div>
             <hr/>
             {/*для личного творчества, могу проверить*/}

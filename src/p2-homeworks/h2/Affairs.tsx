@@ -35,12 +35,10 @@ function Affairs(props: AffairsPropsType) {
 
     return (
         <div className={s.container}>
-            {mappedAffairs}
+            <div className={s.affairs}>
+                {mappedAffairs}
+            </div>
             <div className={s.buttons}>
-                {/*<button onClick={setAll}>All</button>
-                <button onClick={setHigh}>High</button>
-                <button onClick={setMiddle}>Middle</button>
-                <button onClick={setLow}>Low</button>*/}
                 <SuperButton onClick={setAll} size={'small'}>All</SuperButton>
                 <SuperButton onClick={setHigh} className={s.high}>High</SuperButton>
                 <SuperButton onClick={setMiddle} className={s.middle}>Middle</SuperButton>

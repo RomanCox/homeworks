@@ -54,7 +54,7 @@ const SuperInputText: React.FC<SuperInputTextPropsType> = (
     const barStyle = `${style.bar} ${inputError ? style.barError : ''}`
 
     return (
-        <div className={style.group}>
+        <div className={style.container}>
             <input
                 type={'text'}
                 onChange={onChangeCallback}
