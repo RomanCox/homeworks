@@ -1,26 +1,25 @@
 .container {
-    padding-top: 80px;
     width: 100%;
+    height: 100vh;
     background: #ff8989;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.selectContainer {
+.h2Container {
+    width: 100%;
+    height: 172px;
     display: flex;
-    align-items: center;
-    width: 30%;
-    height: 100px;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: flex-end;
 }
 
-
-.radioContainer {
+.itemsContainer {
+    width: 100%;
+    height: 515px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    width: 30%;
-    height: 100px;
     justify-content: space-around;
 }

@@ -12,16 +12,18 @@ function HW7() {
 
     return (
         <div className={s.container}>
+            <div className={s.h2Container}>
                 <h2>homeworks 7</h2>
+            </div>
+
             {/*should work (должно работать)*/}
-            <div className={s.selectContainer}>
+            <div className={s.itemsContainer}>
                 <SuperSelect
                     options={arr1}
                     value={value1}
                     onChangeOption={onChangeOption1}
                 />
-            </div>
-            <div className={s.radioContainer}>
+
                 <SuperRadio
                     name={'radio'}
                     options={arr}
@@ -30,11 +32,6 @@ function HW7() {
                 />
             </div>
 
-            <hr/>
-            {/*для личного творчества, могу проверить*/}
-            {/*<AlternativeSuperSelect/>*/}
-            {/*<AlternativeSuperRadio/>*/}
-            <hr/>
         </div>
     )
 }

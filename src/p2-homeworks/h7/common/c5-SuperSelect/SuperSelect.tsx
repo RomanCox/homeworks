@@ -16,10 +16,9 @@ const SuperSelect: React.FC<SuperSelectPropsType> = (
         ...restProps
     }
 ) => {
-    const mappedOptions: any[] = options ? options.map((o, i: number) => (
-        /*<option key={o + '-' + i} className={s.option} value={o}>{o}</option>*/
-        <div key={o + '-' + i} className={s.list} /*value={o}*/>{o}</div>
-    )) : [] // map options with key
+    /*const mappedOptions: any[] = options ? options.map((o, i: number) => (
+        <option key={o + '-' + i} className={s.option} value={o}>{o}</option>
+    )) : []*/ // map options with key
 
     const [listActive, setListActive] = useState<boolean>(false)
 
@@ -30,6 +29,7 @@ const SuperSelect: React.FC<SuperSelectPropsType> = (
         && onChangeOption(e)*/
         setListActive(!listActive)
     }
+    console.log(listActive)
 
     const barStyle = `${s.bar} ${listActive ? s.barActive : ''}`
 
@@ -37,12 +37,15 @@ const SuperSelect: React.FC<SuperSelectPropsType> = (
 
     return (
         <div className={s.container}>
-            <div className={s.select} onClick={onClickCallback}>{value}</div>
-            <span className={barStyle}>{}</span>
 
-            <div className={listStyle}>
+            <div className={s.select} onClick={onClickCallback}>{}</div>
+            <span className={barStyle}>{}</span>
+            <label className={s.label}>{value}</label>
+
+            {/*<div className={listStyle}>
                 {mappedOptions}
-            </div>
+            <div className={s.option} /*value={o}></div>
+            </div>*/}
         </div>
     )
 }

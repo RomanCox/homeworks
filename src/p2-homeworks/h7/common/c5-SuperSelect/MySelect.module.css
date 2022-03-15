@@ -1,34 +1,43 @@
 .container {
-    position: fixed;
-    top: 144px;
+    position: relative;
+    /*margin-bottom: 30px;*/
 }
 
 .select {
-    position: relative;
-    background: #ff8989;
-    font-size: 16px;
+    width: 300px;
+    height: 15px;
     padding: 10px;
     display: block;
-    width: 300px;
-    height: 22px;
-    border: none;
-    color: #999;
-    font-weight: bold;
     border-bottom: 1px solid #999;
-    z-index: 70;
+}
+
+.label {
+    width: 300px;
+    color: #999;
+    font-size: 30px;
+    font-weight: 500;
+    position: absolute;
+    pointer-events: none;
+    text-align: center;
+    top: -1px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
 }
 
 .select:hover {
     cursor: pointer;
+}
+
+.select:hover ~ .label {
     color: #5264AE;
+
 }
 
 .bar {
-    top: 43px;
     position: relative;
     display: block;
     width: 320px;
-    z-index: 75;
 }
 
 .bar:before,
@@ -37,12 +46,11 @@
     height: 2px;
     width: 0;
     bottom: 0;
+    position: absolute;
     background: #5264AE;
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
-    position: relative;
-
 }
 
 .bar:before {
@@ -53,31 +61,7 @@
     right: 50%;
 }
 
-.barActive {
-    position: relative;
-    z-index: 81;
-    display: block;
-    width: 320px;
-}
-
 .barActive:before,
 .barActive:after {
     width: 50%;
-}
-
-.option {
-    position: relative;
-    width: 320px;
-    z-index: 15;
-    background: white;
-    top: -40px;
-    transition: 1s ease all;
-}
-
-.optionOff {
-    transform: translateY(0);
-}
-
-.optionOn {
-    transform: translateY(40px);
 }
