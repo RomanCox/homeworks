@@ -65,12 +65,24 @@ const AlternativeSuperSelect: React.FC<SuperSelectPropsType> = (
             <div className={style.selectTitle}>Make a choice</div>
             <span className={selectBarStyle}>{}</span>
             <div className={style.selectContent}>
-                <input id={'select'} className={selectInputStyle} type={'radio'} name={'select'} checked={listActive}/>
+                {/*<input id={'select'} className={selectInputStyle} type={'radio'} name={'select'} checked={listActive}/>*/}
+                <input id={'select'} className={selectInputStyle} type={'checkbox'} name={'select'} checked={listActive}/>
                 <label htmlFor={'select'} className={style.selectLabel}>Make a choice</label>
+
                 <input id={'option1'} className={selectInputStyle} type={'radio'} name={'option'}/>
-                <label htmlFor={'option1'} className={style.selectLabel}>X</label>
+                <label htmlFor={'option1'} className={style.selectLabel}>
+                    <span className={style.optionBar}>X</span>
+                </label>
+
                 <input id={'option2'} className={selectInputStyle} type={'radio'} name={'option'}/>
-                <label htmlFor={'option2'} className={style.selectLabel}>Y</label>
+                <label htmlFor={'option2'} className={style.selectLabel}>
+                    <span className={style.optionBar}>Y</span>
+                </label>
+
+                <input id={'option2'} className={selectInputStyle} type={'radio'} name={'option'}/>
+                <label htmlFor={'option2'} className={style.selectLabel}>
+                    <span className={style.optionBar}>Z</span>
+                </label>
             </div>
         </div>
     )
