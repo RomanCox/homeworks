@@ -6,9 +6,11 @@ import AlternativeSuperSelect from "./common/c5-SuperSelect/AlternativeSuperSele
 import AlternativeSuperRadio from "./common/c6-SuperRadio/AlternativeSuperRadio";
 
 const arr = ['x', 'y', 'z']
+const arr1 = [/*'Make a choice', */'x', 'y', 'z']
 
 function HW7() {
     const [value, onChangeOption] = useState<string>('Make a choice')
+    const [value1, onChangeOption1] = useState<string>('Make a choice')
 
     return (
         <div className={s.container}>
@@ -34,16 +36,17 @@ function HW7() {
 
             <div className={s.itemsContainer}>
                 <AlternativeSuperSelect
-                    options={arr}
-                    value={value}
-                    onChangeOption={onChangeOption}
+                    options={arr1}
+                    value={value1}
+                    onChangeOption={onChangeOption1}
+                    name={'option'}
                 />
 
                 <AlternativeSuperRadio
                     name={'radio'}
-                    options={arr}
-                    value={value}
-                    onChangeOption={onChangeOption}
+                    options={arr1}
+                    value={value1}
+                    onChangeOption={onChangeOption1}
                 />
             </div>
 
