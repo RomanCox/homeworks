@@ -1,0 +1,170 @@
+.select {
+    position: relative;
+    width: 320px;
+    height: 35px;
+    margin: 0 auto;
+}
+
+.selectActive .selectTitle::before {
+    -webkit-transform: translate(-3px, -50%) rotate(-45deg);
+    transform: translate(-3px, -50%) rotate(-45deg);
+}
+
+.selectActive .selectTitle::after {
+    -webkit-transform: translate(3px, -50%) rotate(45deg);
+    transform: translate(3px, -50%) rotate(45deg);
+}
+
+.selectActive .selectContent {
+    opacity: 1;
+}
+
+.selectActive .selectLabel + .selectInput + .selectLabel {
+    max-height: 35px;
+    border-top-width: 1px;
+}
+
+.selectTitle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    /*padding: 8px 16px;*/
+    border-bottom: 1px solid #333333;
+    cursor: pointer;
+    color: #333333;
+    font-weight: 500;
+    font-size: 20px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.selectTitle:hover {
+    color: #5264AE;
+    cursor: pointer;
+}
+
+.selectTitle::before, .selectTitle::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    display: block;
+    width: 10px;
+    height: 2px;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    background-color: #333333;
+    -webkit-transform: translate(-3px, -50%) rotate(45deg);
+    transform: translate(-3px, -50%) rotate(45deg);
+}
+
+.selectTitle::after {
+    -webkit-transform: translate(3px, -50%) rotate(-45deg);
+    transform: translate(3px, -50%) rotate(-45deg);
+}
+
+.selectContent {
+    position: absolute;
+    top: 40px;
+    left: 3px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: calc(100% - 6px);
+    background-color: #ffffff;
+    border: 1px solid #c7ccd1;
+    border-top: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    opacity: 0;
+    z-index: 8;
+}
+
+.selectInput {
+    display: none;
+}
+
+.selectInput:checked + label {
+    background-color: #dedede;
+}
+
+.selectInputActive + label {
+    background-color: #dedede;
+}
+
+.selectInput:disabled + label {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.selectLabel {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 35px;
+    max-height: 0;
+    /*padding: 0 16px;*/
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.selectLabel + input + .selectLabel {
+    border-top: 0 solid #C7CCD160;
+}
+
+.selectLabel:hover {
+    background-color: #D8093A !important;
+    color: #ffffff;
+}
+
+.selectBar {
+    position: relative;
+    display: block;
+    width: 320px;
+}
+
+.selectBar:before,
+.selectBar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.selectBar:before {
+    left: 50%;
+}
+
+.selectBar:after {
+    right: 50%;
+}
+
+.selectBarActive:before,
+.selectBarActive:after {
+    width: 50%;
+}
