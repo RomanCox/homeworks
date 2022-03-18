@@ -9,7 +9,7 @@ type SuperRadioPropsType = DefaultRadioPropsType & {
     className?: string
 }
 
-const SuperRadio: React.FC<SuperRadioPropsType> = (
+const   SuperRadio: React.FC<SuperRadioPropsType> = (
     {
         type, name,
         options, value,
@@ -23,6 +23,7 @@ const SuperRadio: React.FC<SuperRadioPropsType> = (
         && onChange(e)
         onChangeOption
         && onChangeOption(e.currentTarget.value)
+        console.log(e.currentTarget.value)
     }
 
     const radioStyle = `${s.inputCheckbox} ${s.radio} ${className}`

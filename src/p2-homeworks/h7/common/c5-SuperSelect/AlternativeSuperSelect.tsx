@@ -34,8 +34,6 @@ const AlternativeSuperSelect: React.FC<SuperSelectPropsType> = (
         console.log(e.currentTarget.value)
     }
 
-    console.log(value)
-
     const selectStyle = `${style.select} ${listActive ? style.selectActive : ''}`
     const selectInputStyle = `${style.selectInput} ${listActive ? style.selectInputActive : ''}`
     const selectBarStyle = `${style.selectBar} ${listActive ? style.selectBarActive : ''}`

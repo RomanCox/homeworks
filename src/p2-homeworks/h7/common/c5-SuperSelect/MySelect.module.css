@@ -1,134 +1,19 @@
-.container {
-    position: relative;
-    /*margin-bottom: 30px;*/
-}
-
 .select {
-    position: relative;
-    width: 320px;
-    height: 35px;
-    font-size: 30px;
-    color: #999;
-    font-weight: 500;
-    text-align: center;
-    display: block;
-    border-bottom: 1px solid #999;
-    z-index: 2;
-    background: #ff8989;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
-    user-select: none;
-}
-
-.select:hover{
-    color: #5264AE;
+    width: 100px;
+    padding: 5px;
+    padding-right: 50px;
     cursor: pointer;
+    /*appearance: none;*/
+    background-color: #ff8989;
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: 65em auto, 100%;
 }
 
-.bar, .barOption {
-    position: relative;
-    display: block;
-    width: 320px;
-    z-index: 2;
+
+
+.option:checked {
+    background: #ce3737;
+    color: white;
 }
 
-.bar:before,
-.bar:after,
-.barOption:before,
-.barOption:after {
-    content: '';
-    height: 2px;
-    width: 0;
-    bottom: 0;
-    position: absolute;
-    background: #5264AE;
-    transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;
-}
-
-.bar:before,
-.barOption:before {
-    left: 50%;
-}
-
-.bar:after,
-.barOption:after {
-    right: 50%;
-}
-
-.barActive:before,
-.barActive:after {
-    z-index: 2;
-    width: 50%;
-}
-
-.option:hover ~ .barOption:before,
-.option:hover ~ .barOption:after {
-    width: 50%;
-}
-
-.optionContainer {
-    background: #ff8989;
-    width: 320px;
-    height: 35px;
-    transition: 0.2s linear all;
-    -moz-transition: 0.2s linear all;
-    -webkit-transition: 0.2s linear all;
-    z-index: 1;
-}
-
-.optionContainerOff {
-    transform: translateY(-35px);
-    cursor: default;
-}
-
-.optionContainerOn {
-    transform: translateY(0px);
-    cursor: pointer;
-}
-
-.option {
-    /*background: #ff8989;
-    width: 320px;
-    height: 35px;*/
-    width: 100%;
-    height: 100%;
-    display: block;
-    border-bottom: 1px solid #999;
-    /*transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;*/
-    z-index: 1;
-    font-size: 30px;
-    color: #999;
-    font-weight: 500;
-    text-align: center;
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none;   /* Chrome/Safari/Opera */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* Internet Explorer/Edge */
-    user-select: none;
-}
-
-.option:hover {
-    color: #5264AE;
-}
-
-/*.optionOff {
-    transform: translateY(-35px);
-    cursor: default;
-}
-
-.optionOn {
-    transform: translateY(0px);
-    cursor: pointer;
-}*/
-
-.option:hover ~ .barOption:before,
-.option:hover ~.barOption:after {
-    z-index: 2;
-    width: 50%;
-}

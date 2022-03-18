@@ -9,8 +9,8 @@ const arr = ['x', 'y', 'z']
 const arr1 = [/*'Make a choice', */'x', 'y', 'z']
 
 function HW7() {
-    const [value, onChangeOption] = useState<string>('Make a choice')
-    const [value1, onChangeOption1] = useState<string>('Make a choice')
+    const [value, onChangeOption] = useState(/*'Make a choice'*/arr[1])
+    const [value1, onChangeOption1] = useState('Make a choice')
 
     return (
         <div className={s.container}>
@@ -27,7 +27,7 @@ function HW7() {
                 />
 
                 <SuperRadio
-                    name={'radio'}
+                    name={'homework #7'}
                     options={arr}
                     value={value}
                     onChangeOption={onChangeOption}
@@ -43,7 +43,7 @@ function HW7() {
                 />
 
                 <AlternativeSuperRadio
-                    name={'radio'}
+                    name={'homework #7 Alternative'}
                     options={arr1}
                     value={value1}
                     onChangeOption={onChangeOption1}

@@ -1,4 +1,4 @@
-import React, {SelectHTMLAttributes, DetailedHTMLProps, useState} from 'react'
+import React, {SelectHTMLAttributes, DetailedHTMLProps, ChangeEvent} from 'react'
 import s from './MySelect.module.css'
 
 type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
@@ -6,49 +6,37 @@ type DefaultSelectPropsType = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectE
 type SuperSelectPropsType = DefaultSelectPropsType & {
     options?: any[],
     onChangeOption?: (option: string) => void,
-    value?: string,
+    className?: string,
 }
 
 const SuperSelect: React.FC<SuperSelectPropsType> = (
     {
-        options, value,
+        options, className,
         onChange, onChangeOption,
-        /*...restProps*/
+        ...restProps
     }
 ) => {
-    const [listActive, setListActive] = useState<boolean>(false)
-
-    const barStyle = `${s.bar} ${listActive ? s.barActive : ''}`
-
-    const listStyle = `${s.optionContainer} ${listActive ? s.optionContainerOn : s.optionContainerOff}`
 
     const mappedOptions: any[] = options ? options.map((o, i) => (
-            /*<option key={o + '-' + i} className={s.option} value={o}>{o}</option>*/
-            <div className={listStyle}>
-                <div key={o + '-' + i} className={s.option}>{o}</div>
-                <span className={s.barOption}>{}</span>
-            </div>
+            <option key={o + '-' + i} className={s.option} value={o}>{o}</option>
         )
     ) : [] // map options with key
 
-    const onClickCallback = (/*e: MouseEventHandler<HTMLDivElement>*/) => {
-        /*onChange
+    const onChangeCallback = (e: ChangeEvent<HTMLSelectElement>) => {
+        onChange
         && onChange(e)
         onChangeOption
-        && onChangeOption(e)*/
-        setListActive(!listActive)
+        && onChangeOption(e.currentTarget.value)
     }
 
-    return (
-        <div className={s.container}>
-                <div className={s.select} onClick={onClickCallback}>{value}</div>
-                <span className={barStyle}>{}</span>
-            {/*<div className={listStyle}>
-                {mappedOptions}
-            <div className={s.option} /*value={o}></div>
-            </div>*/}
+    const finalSelectClassName = s.select + (
+        className
+            ? ' ' + className
+            : ''
+    )
 
-        </div>
+    return (
+            <select className={finalSelectClassName} onChange={onChangeCallback} {...restProps}>{mappedOptions}</select>
     )
 }
 
