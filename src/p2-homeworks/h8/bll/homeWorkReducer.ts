@@ -1,21 +1,20 @@
 import {UserType} from "../HW8";
 
-export const homeWorkReducer = (state: Array<UserType>, action: MainType): Array<UserType> => { // need to fix any
+export const homeWorkReducer = (state: UserType[], action: MainType): UserType[] => { // need to fix any
     switch (action.type) {
         case 'sort': {
             // need to fix
             let newState = [...state]
             if (action.payload.sortType === 'up') {
-                newState = newState.sort((a, b) => a.name < b.name ? -1 : 1)
+                newState = newState.sort((a, b) => a.name <= b.name ? -1 : 1)
             } else if (action.payload.sortType === 'down') {
-                newState = newState.sort((a, b) => a.name < b.name ? -1 : 1).reverse()
+                newState = newState.sort((a, b) => a.name <= b.name ? -1 : 1).reverse()
             }
             return newState
         }
         case 'check': {
             // need to fix
-            let newState = [...state]
-            return newState.filter(st => st.age >= action.payload.age)
+            return state.filter(st => st.age >= action.payload.age)
         }
         default:
             return state
