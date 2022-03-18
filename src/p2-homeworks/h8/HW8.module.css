@@ -16,7 +16,7 @@
 }
 
 .itemsContainer {
-    width: 100%;
+    width: 70%;
     height: 320px;
     display: flex;
     flex-direction: row;
@@ -46,7 +46,7 @@
 }
 
 .buttonsContainer {
-    width: 100%;
+    width: 60%;
     height: 100px;
     display: flex;
     flex-direction: row;
