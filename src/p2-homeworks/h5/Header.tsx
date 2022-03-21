@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom";
 import {PATH} from "./Navigation";
 import s from './Header.module.css'
 import SuperButton from "../h4/common/c2-SuperButton/SuperButton";
+import {ClickAwayListener} from '@mui/material';
 
 function Header() {
 
@@ -21,6 +22,10 @@ function Header() {
         setPath(title)
     }
 
+    const clickAwayHandler = () => {
+        setMenu(false)
+    }
+
     const menuOnOff = () => {
         setMenu(!menu)
     }
@@ -31,9 +36,11 @@ function Header() {
 
     return (
         <div className={s.container}>
-            <div className={s.menuButtonContainer}>
-                <SuperButton onClick={menuOnOff} className={menuActive}>MENU</SuperButton>
-            </div>
+            <ClickAwayListener onClickAway={clickAwayHandler}>
+                <div className={s.menuButtonContainer}>
+                    <SuperButton onClick={menuOnOff} className={menuActive}>MENU</SuperButton>
+                </div>
+            </ClickAwayListener>
 
             <div className={menuStyle}>
                 <div className={s.menuList}>
@@ -51,6 +58,7 @@ function Header() {
                     </SuperButton>
                 </div>
             </div>
+
         </div>
     )
 }
